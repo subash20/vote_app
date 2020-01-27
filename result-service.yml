@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db
+  name: result-service
   labels:
-    name: db-service
+    name: result-service
     app: demo-votting-app
 
 spec:
+  type: LoadBalancer
   ports:
-    - port: 5432
-      targetPort: 5432
+    - port: 80
+      targetPort: 80
   selector:
-    name: postgres-pod
+    name: result-app-pod
     app: demo-votting-app
